@@ -13,28 +13,24 @@ public class Test02 {
 		System.out.println(b[0]+", "+b[1]+", "+b[2]);
 		
 		// 문제3
-		int[] lotto1 = {6,12,33,4,5,26};
-		lotto1[2] += 2;	// 33->35
-		System.out.println(lotto1[2]);
+		int[] lotto = {6,12,33,4,5,26};
+		System.out.println(lotto[2] + 2);
 		
 		// 문제4
-		int[] lotto2 = {6,12,33,4,5,26};
-		System.out.println(lotto2[0]+lotto2[2]+lotto2[4]);
+		System.out.println(lotto[0]+lotto[2]+lotto[4]);
 		
 		// 문제5
-		int[] lotto3= {6,12,33,4,5,26};
-		lotto3[0] = lotto3[0];
-		lotto3[1] += lotto3[0];
-		lotto3[2] += lotto3[1];
-		lotto3[3] += lotto3[2];
-		lotto3[4] += lotto3[3];
-		lotto3[5] += lotto3[4];
-		System.out.println(lotto3[0] + "," + lotto3[1] + "," + lotto3[2] + "," + lotto3[3] +
-				"," + lotto3[4] + "," + lotto3[5]);
+		lotto[0] = lotto[0];
+		lotto[1] += lotto[0];
+		lotto[2] += lotto[1];
+		lotto[3] += lotto[2];
+		lotto[4] += lotto[3];
+		lotto[5] += lotto[4];
+		System.out.println(lotto[0] + "," + lotto[1] + "," + lotto[2] + "," + lotto[3] +
+				"," + lotto[4] + "," + lotto[5]);
 		
-		// 문제6
-		int[] lotto4= {6,12,33,4,5,26}; 
-		System.out.println(lotto4[3] % 2 == 1);
+		// 문제6 
+		System.out.println(lotto[3] % 2 == 1);
 		
 		// 문제7
 		int money = 2750;
