@@ -46,7 +46,6 @@ public class Test02 {
 		int yA = 500;
 		int xB = 900;
 		int yB = 300;
-		
 		int xC = 650;
 		int yC = 150;
 		// 가변적으로 줄 값
