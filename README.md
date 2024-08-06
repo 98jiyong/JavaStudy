@@ -1,6 +1,9 @@
-## Java Study
+# Java Study
 
-https://github.com/98jiyong/JavaStudy/issues/1#issue-2449767081
+## 깃 연동
+
+![git_init](https://github.com/user-attachments/assets/f572e79b-0ac7-493e-b5fc-2e77defb3508)
+설치하고자 하는 파일에 git init
 
 - 변수명
 - 자료형
