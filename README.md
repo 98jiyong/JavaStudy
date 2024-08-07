@@ -1,5 +1,5 @@
 # 깃 연동
-| 참고 : https://beam-maru.tistory.com/116
+| 참고 : https://beam-maru.tistory.com/116<br>
 ![git_init](https://github.com/user-attachments/assets/f572e79b-0ac7-493e-b5fc-2e77defb3508)<br>
 설치하고자 하는 폴더에 <strong>`[git init]`</strong> 을 한 후 <strong>`[user.name]`</strong>과 <strong>`[user.email]`</strong>을 작성하기<br>
 <br>
