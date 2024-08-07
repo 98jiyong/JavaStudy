@@ -22,7 +22,6 @@
 `git fetch` => fetch는 원격 저장소에서 변경된 정보를 확인할 뿐 가져오지는 않는다.<br>
 `git pull [remote] [branch]` => 원격 저장소에 변경된 내용 뿐 만 아니라 최신 정보도 로컬 저장소로 가져옴<br>
 
-<img src="https://img.shields.io/badge/EclipseIDE-#2c2255?style=flat&logo=EclipseIDE&logoColor=white"/>
 # Java Study
 - 변수명
  https://github.com/98jiyong/JavaStudy/blob/main/_00Variable/%EC%A0%95%EB%A6%AC%EB%85%B8%ED%8A%B8
