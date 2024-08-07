@@ -23,7 +23,6 @@
 `git pull [remote] [branch]` => 원격 저장소에 변경된 내용 뿐 만 아니라 최신 정보도 로컬 저장소로 가져옴<br>
 
 # Java Study
-- [변수명](https://github.com/98jiyong/JavaStudy/blob/main/_00Variable/%EC%A0%95%EB%A6%AC%EB%85%B8%ED%8A%B8)
-- 자료형
-- 배열
-- 조건문
+- [변수명 & 자료형](https://github.com/98jiyong/JavaStudy/blob/main/_00Variable/%EC%A0%95%EB%A6%AC%EB%85%B8%ED%8A%B8)
+- [배열](https://github.com/98jiyong/JavaStudy/blob/main/_01Array/%EC%A0%95%EB%A6%AC%EB%85%B8%ED%8A%B8)
+- [조건문](https://github.com/98jiyong/JavaStudy/blob/main/_02If/%EC%A0%95%EB%A6%AC%EB%85%B8%ED%8A%B8)
