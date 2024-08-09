@@ -99,15 +99,13 @@ public class Test04 {
 		System.out.println("------------------------");
 		// up9
 		// 20240808_미완성 --> 20240808_21:22_완성
-		int c = 0;
-		int d = 0;
-		int e = 1;
-		for(int i=1; i<20; i++) {
-			d = e + c;
-			i = d;
-			e = c;
-			c = d;
+		int temp = 0;
+		int bint = 0;
+		for(int i=1; i<20;) {
 			System.out.print(i + " ");
+			temp = i;
+			i = bint + i;
+			bint = temp;
 		}
 		System.out.println();
 		System.out.println("------------------------");
