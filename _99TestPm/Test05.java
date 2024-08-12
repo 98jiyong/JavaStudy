@@ -14,7 +14,7 @@ public class Test05 {
 		System.out.println("Q2---------------");
 		// 2. 1부터 100까지 숫자중에서 홀수의 총합을 구하시오.
 		int oddSum = 0;
-		for(int i=1; i<=100; i++) {
+		for(int i = 1; i <= 100; i++) {
 			if(i % 2 == 1) {
 				oddSum += i;
 			}
@@ -22,7 +22,7 @@ public class Test05 {
 		System.out.println(oddSum);
 		System.out.println("Q3---------------");
 		// 3. 다음과 같이 출력하시오   10  9  8  7  6  5  4  3  2  1
-		for(int i=10; i > 0; i--) {
+		for(int i = 10; i > 0; i--) {
 			System.out.print(i + " ");
 		}
 		System.out.println();
@@ -63,7 +63,7 @@ public class Test05 {
 		// 8.위 코드를 분석하여 test문자열에 a가 몇개 있는지 구하는 프로그램을 작성하세요.
 		String test = "abcdeabce";
 		int charCount = 0;
-	    for(int i=0; i < 9; i ++){
+	    for(int i = 0; i < test.length(); i ++){
 	    	char aaa = test.charAt(i);
 	    	if(aaa == 'a') {
 	    		charCount++;
@@ -101,20 +101,17 @@ public class Test05 {
 		int b1 = 0;
 		int tunnelCount1 = 0;
 		int longestTunnel1 = 0;
-		for (int i = 0; i < tunnel1.length; i++) {
+		for (int i = 1; i < tunnel1.length; i++) {
 			a1 = tunnel1[i];
+			b1 = tunnel1[i-1];
 			if(b1 == a1) {
 				tunnelCount1 ++;
-				if(tunnelCount1 > longestTunnel1) {
-					longestTunnel1 = tunnelCount1;
-				}
-			}else {
-				if(tunnelCount1 > longestTunnel1) {
-					longestTunnel1 = tunnelCount1;
-				}
+			}else { 
 				tunnelCount1 = 0;
 			}
-			b1 = tunnel1[i];
+			if(tunnelCount1 > longestTunnel1) {
+				longestTunnel1 = tunnelCount1;
+			}
 		}
 		System.out.println(longestTunnel1 + 1);
 		System.out.println("Q12---------------");
@@ -125,22 +122,18 @@ public class Test05 {
 		int tunnelNum = 0;
 		int tunnelCount2 = 0;
 		int longestTunnel2 = 0;
-		for (int i = 0; i < tunnel2.length; i++) {
+		for (int i = 1; i < tunnel2.length; i++) {
 			a2 = tunnel2[i];
+			b2 = tunnel2[i-1];
 			if(b2 == a2) {
 				tunnelCount2 ++;
-				if(tunnelCount2 > longestTunnel2) {
-					longestTunnel2 = tunnelCount2;
-					tunnelNum = tunnel2[i];
-				}
 			}else {
-				if(tunnelCount2 > longestTunnel2) {
-					longestTunnel2 = tunnelCount2;
-					tunnelNum = tunnel2[i];
-				}
 				tunnelCount2 = 0;
 			}
-			b2 = tunnel2[i];
+			if(tunnelCount2 > longestTunnel2) {
+				longestTunnel2 = tunnelCount2;
+				tunnelNum = tunnel2[i];
+			}
 		}
 		System.out.println("가장 긴 터널의 숫자 : " + tunnelNum + ",길이 :  "+ (longestTunnel2 + 1));
 		System.out.println("Q13---------------");
@@ -151,21 +144,17 @@ public class Test05 {
 		char longChar = ' ';
 		char x = ' ';
 		char y = ' ';
-		for(int i=1; i< ttt.length(); i++) {
+		for(int i = 1; i < ttt.length(); i++) {
 			x = ttt.charAt(i);
 			y = ttt.charAt(i-1);
 			if(y == x) {
 				numCount ++;
-				if(numCount > biggestChar) {
-					biggestChar = numCount;
-					longChar = ttt.charAt(i);
-				}
 			}else {
-				if(numCount > biggestChar) {
-					biggestChar = numCount;
-					longChar = ttt.charAt(i);
-				}
 				numCount = 0;
+			}
+			if(numCount > biggestChar) {
+				biggestChar = numCount;
+				longChar = ttt.charAt(i);
 			}
 		}
 		System.out.println("알파벳 이름 : " + longChar + ", 개수 : " + (biggestChar + 1));
