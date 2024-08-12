@@ -180,10 +180,8 @@ public class Test05 {
 				result += q + "" + (cnt + 1) + " ";
 				cnt = 0;
 			}
-			if(i == tttt.length()-1) {
-				result += q + "" + (cnt + 1);
-			}
 		}
+		result += q + "" + (cnt + 1);
 		System.out.println(result);
 	}
 }
