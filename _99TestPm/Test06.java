@@ -185,7 +185,6 @@ public class Test06 {
 			lotto[i] = num;
 			System.out.print(lotto[i] + " ");
 		}
-		
 		System.out.println("\n------------------");
 		
 		// 10. -> 못품
@@ -195,32 +194,25 @@ public class Test06 {
 		// 11.
 		System.out.println("Q11");
 		// 컴퓨터 랜덤 가위바위보 값 생성
-		int comp_rsp = r.nextInt(3)+1;
-		int result_rsp = 0;
+		int comp_rps = r.nextInt(3)+1;
+		int result_rps = 0;
 		// 입력값으로 가위바위보 받기
 		System.out.println("가위 : 1, 바위 : 2, 보 : 3");
-		String human_rsp = in.nextLine();
+		String human_rps = in.nextLine();
 		// 가위바위보 계산
-		result_rsp = comp_rsp - Integer.parseInt(human_rsp);
+		result_rps = comp_rps - Integer.parseInt(human_rps);
 		// 조건에 따른 결과문 출력
-		if(result_rsp == 0) System.out.println("Draw!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
-		else if(result_rsp == -1) System.out.println("Human Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
-		else if(result_rsp == 2) System.out.println("Human Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
-		else if(result_rsp == 1) System.out.println("Computer Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
-		else if(result_rsp == -2) System.out.println("Computer Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
-		
+		if(result_rps == 0) System.out.println("Draw!\n" + "Human : " + human_rps + "computer : " + comp_rps);
+		else if(result_rps == -1) System.out.println("Human Win!\n" + "Human : " + human_rps + "computer : " + comp_rps);
+		else if(result_rps == 2) System.out.println("Human Win!\n" + "Human : " + human_rps + "computer : " + comp_rps);
+		else if(result_rps == 1) System.out.println("Computer Win!\n" + "Human : " + human_rps + "computer : " + comp_rps);
+		else if(result_rps == -2) System.out.println("Computer Win!\n" + "Human : " + human_rps + "computer : " + comp_rps);
 		System.out.println("------------------");
 		
 		// 12. - 못품
 		System.out.println("Q12");
-//		int[] lotto_storage = new int[10000];
-//		for(int i=0; i < lotto_storage.length; i++) {
-//			for(int j = 0; j < lotto.length; j++) {
-//				int num = r.nextInt(45)+1;
-//				lotto[j] = num;
-//			}
-//		}
 		System.out.println("\n------------------");
+		
 		// 특별1.
 		System.out.println("Q특별1");
 		String d = "6/4/3/2/5/1/4/5/6/7/8/9/1/2/3/4/5/6";
