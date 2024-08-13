@@ -1,12 +1,13 @@
 package _99TestPm;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Test06 {
 
 	public static void main(String[] args) {
 		// 우럭조 
-		// 0.짝수만 출력하시오.
+		// 0.
 		System.out.println("Q0");
 		int[] letter = {8,12,4,13,2,14,4,5};
 		for(int i = 0; i < letter.length; i ++) {
@@ -17,31 +18,30 @@ public class Test06 {
 		System.out.println();
 		System.out.println("------------------");
 		
-		// 1.배열의 가장 큰수가 있는 인덱스를 출력하시오.
+		// 1.
 		System.out.println("Q1");
 		int bigNum = 0;
+		int bigIndex = 0;
 		for(int i = 0; i < letter.length; i ++) {
 			if(letter[i] > bigNum) {			
+				bigNum = letter[i];
+				bigIndex = i;
+			}
+		}
+		System.out.println(bigIndex);
+		System.out.println("------------------");
+		
+		// 2.
+		System.out.println("Q2");
+		for(int i = 0; i < letter.length; i ++) {
+			if(letter[i] % 2 == 0 && letter[i] > bigNum) {				
 				bigNum = letter[i];
 			}
 		}
 		System.out.println(bigNum);
 		System.out.println("------------------");
 		
-		// 2.범인을찾으시오 / 범인은 짝수이면서 가장큰 값이다. / 범인은 14입니다. 
-		System.out.println("Q2");
-		for(int i = 0; i < letter.length; i ++) {
-			if(letter[i] % 2 == 0) {				
-				if(letter[i] > bigNum) {			
-					bigNum = letter[i];
-				}
-			}
-		}
-		System.out.println(bigNum);
-		System.out.println("------------------");
-		
-		// 3.letter  배열은 word문자열 알파벳의 위치이다.
-		// letter배열의 암호를 풀어서 편지의 내용을 출력하시오. 
+		// 3.
 		System.out.println("Q3");
 		int[] letter1={8,12,3,13,1,14,3,4};
 		String word ="gehoudfkimjnlvy";
@@ -52,10 +52,7 @@ public class Test06 {
 		System.out.println(detail);
 		System.out.println("------------------");
 		
-		// 4.arr 배열에서 0이 의미하는 것은 공터이다. 
-		// size는 건물의 크기 이다. 건물은 하나만 짓는다. 공터는 연속적으로 있어야 한다. 
-		// size 설정값에 따라 공터에 건물을 지을 수 있는 위치는 모두 몇개인가?
-		// size가 2일경우에 7개이다. 
+		// 4.
 		System.out.println("Q4");
 		int[] arr = {1,0,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,1};
 		int cnt = 0;
@@ -74,124 +71,193 @@ public class Test06 {
 		System.out.println(result);
 		System.out.println("------------------");
 		
-		// 5. 숫자는  nextInt(), 문자열을 nextLine() 메서드를 사용한다. 
-		// 이때 문자열의 길이는 0보다 크고 10보다 작으며 짝수만 가능하다.
-		// 조건에 만족될때까지 문자 입력을 받는다.
-		// 문자열을 앞으로 읽으나 뒤로 읽으나 같은 경우의 문자를 판별하는 코드를 작성하세요
-//		System.out.println("Q5");
-//		Scanner in = new Scanner(System.in);
-//		String a  = in.nextLine();
-//		String fA = "";
-//		String eA = "";
-//		if(a.length() > 0 && a.length() < 10) {
-//			if(a.length() % 2 == 0) {
-//				for(int i = 0; i < a.length()/2; i++) {					
-//					fA += a.charAt(i);
-//				}
-//				for(int i = a.length()-1; i > a.length()/2-1; i--) {					
-//					eA += a.charAt(i);
-//				}
-//				if(fA.equals(eA)) {
-//					System.out.println(fA);
-//					System.out.println(eA);
-//					System.out.println("앞 뒤가 같습니다.");
-//				}else {					
-//					System.out.println(a);
-//				}
-//			}
-//		}
-//		System.out.println("------------------");
-		// 6.수식을 계산하는 프로그램을 작성하세요.
-		// 수식 계산 규칙은 연산자 우선순위 없이 앞에서 부터 차례대로 계산한다.
-		// 지금까지 공부한 내용으로 해결하시고, 형변환만 검색이 가능합니다. 
-		// 메서드는 최대한 적게 사용하세요
-		// 20240812 -> +,-,*,/ 값을 따로 체크해서 계산하는 방법으로
-		// 부호를 만났을 때 앞에 값을 더하기
-		// 부호 앞의값을 저장하고 그 앞의 부호를 저장 ex) +면 56을 저장하고 -를 저장해서 계산 
-		// 앞에 부호의 위치를 계산하려면 부호 전의 숫자의 개수를 세는 카운트 변수를 만들고 
-		// ex) -는 인덱스 2번 +는 인덱스 5번 그사이 숫자가 2개니까 카운트를 3증가
-		// if( b.charAt(i-카운트) == '부호') => sum = sum 부호 저장 값
-		
-		
-		System.out.println("Q6");
-		String b ="23-56+45*2-56";
-		String cal = "";
-		String dal = "";
-		int num = 0;
-		int sum = 23;
-		char sign = ' ';
-		for(int i = 0; i < b.length()-3; i++) {
-			if((int)b.charAt(i) >= 48) {
-				cal += b.charAt(i);
-			}else {
-				sign = b.charAt(i);
-				if(sign == '+') {
-					if((int)b.charAt(i+1) >= 48) {
-						dal += b.charAt(i+1);
-					}
-					if((int)b.charAt(i+2) >= 48) {
-						dal += b.charAt(i+2);
-					}
-					sum += Integer.parseInt(dal);
-					System.out.println(sum);
-					dal = "";
-				}else if(sign == '-') {
-					if((int)b.charAt(i+1) >= 48) {
-						dal += b.charAt(i+1);
-					}
-					if((int)b.charAt(i+2) >= 48) {
-						dal += b.charAt(i+2);
-					}
-					sum -= Integer.parseInt(dal);
-					System.out.println(sum);
-					dal = "";
-				}else if(sign == '*') {
-					if((int)b.charAt(i+1) >= 48) {
-						dal += b.charAt(i+1);
-					}
-					if((int)b.charAt(i+2) >= 48) {
-						dal += b.charAt(i+2);
-					}
-					sum *= Integer.parseInt(dal);
-					System.out.println(sum);
-					sum += Integer.parseInt(cal);	
-					dal = "";
-				}else if(sign == '/') {
-					if((int)b.charAt(i+1) >= 48) {
-						dal += b.charAt(i+1);
-					}
-					if((int)b.charAt(i+2) >= 48) {
-						dal += b.charAt(i+2);
-					}
-					sum /= Integer.parseInt(dal);
-					System.out.println(sum);
-					dal = "";
-				}
+		// 5.
+		System.out.println("Q5");
+		Scanner in = new Scanner(System.in);
+		String a  = in.nextLine();
+		String fA = "";
+		String eA = "";
+		if(a.length() > 0 && a.length() < 10 && a.length() % 2 == 0) {
+			for(int i = 0; i < a.length()/2; i++) {					
+				fA += a.charAt(i);
+			}
+			for(int i = a.length()-1; i > a.length()/2-1; i--) {					
+				eA += a.charAt(i);
+			}
+			if(fA.equals(eA)) {
+				System.out.println("앞 뒤가 같습니다.");
+			}else {					
+				System.out.println(a);
 			}
 		}
+		System.out.println("------------------");
+		
+		// 6.
+		System.out.println("Q6");
+		String b ="23-56+45*2-56";
+		String pre_num = "";
+		int cnt_num = 0;
+		int sum = 0;
+		char sign = ' ';
+		for(int i = 0; i < b.length(); i++) {
+			if(b.charAt(i) == '+' || b.charAt(i) == '-' || b.charAt(i) == '*' || b.charAt(i) == '/') {
+				// 처음 값을 저장하기 위한 조건문 
+				if(cnt_num == 0) {
+					cnt_num++;
+					sum = Integer.parseInt(pre_num);
+					sign = b.charAt(i);
+					pre_num = "";
+				}
+				else {
+					if(sign == '+') {
+						sum += Integer.parseInt(pre_num);
+						sign = b.charAt(i);
+						pre_num = "";
+					}else if(sign == '-') {
+						sum -= Integer.parseInt(pre_num);
+						sign = b.charAt(i);
+						pre_num = "";
+					}else if(sign == '*') {
+						sum *= Integer.parseInt(pre_num);
+						sign = b.charAt(i);
+						pre_num = "";
+					}else if(sign == '/') {
+						sum /= Integer.parseInt(pre_num);
+						sign = b.charAt(i);
+						pre_num = "";
+					}
+				}
+			}else {
+				pre_num += b.charAt(i);
+			}
+		}
+		// 마지막 값을 연산하기 위한 조건문
+		if(sign == '+') sum += Integer.parseInt(pre_num);
+		else if(sign == '-') sum -= Integer.parseInt(pre_num);
+		else if(sign == '*') sum *= Integer.parseInt(pre_num);
+		else if(sign == '/') sum /= Integer.parseInt(pre_num);
+			
+		System.out.println(sum);
 		System.out.println("------------------");
 		
 		// 7.
 		System.out.println("Q7");
 		int[]c = {34,2,35,8,31,45};
-		if(c[0] < c[1]) c[0] = c[1];
-		if(c[1] < c[2]) c[1] = c[2];
-		if(c[2] < c[3]) c[2] = c[3];
-		if(c[3] < c[4]) c[3] = c[4];
-		if(c[4] < c[5]) c[4] = c[5];
-		System.out.println(c[5]);
+		int replace_a = 0;
+		for(int i = 0; i < c.length-1; i++) {
+			if(c[i] > c[i+1]) {
+				replace_a = c[i];
+				c[i] = c[i+1];
+				c[i+1] = replace_a;
+			}
+		}
+		for(int i = 0; i < c.length; i++) {
+			System.out.print(c[i] + " ");
+		}
+		System.out.println("\n" + c[5]);
 		System.out.println("------------------");
 		
-		//8. 
+		// 8.
 		System.out.println("Q8");
-		if(c[0] < c[1]) c[0] = c[1];
-		if(c[0] < c[2]) c[0] = c[2];
-		if(c[0] < c[3]) c[0] = c[3];
-		if(c[0] < c[4]) c[0] = c[4];
-		if(c[0] < c[5]) c[0] = c[5];
-		System.out.println(c[0]);
+		int[]p = {34,2,35,8,31,45};
+		int replace_b = 0;
+		for(int i = 1; i < p.length; i++) {
+			if(p[0] < p[i]) {
+				replace_b = p[i];
+				p[i] = p[0];
+				p[0] = replace_b;
+
+			}			
+		}
+		for(int i = 0; i < p.length; i++) {
+			System.out.print(p[i] + " ");
+		}
+		System.out.println();
+		System.out.println(p[0]);
 		System.out.println("------------------");
 		
+		// 9.
+		System.out.println("Q9");
+		Random r = new Random();  
+		int[] lotto = new int[6];
+		for(int i = 0; i < lotto.length; i++) {
+			int num = r.nextInt(45)+1;
+			lotto[i] = num;
+			System.out.print(lotto[i] + " ");
+		}
+		
+		System.out.println("\n------------------");
+		
+		// 10. -> 못품
+		System.out.println("Q10");
+		System.out.println("\n------------------");
+		
+		// 11.
+		System.out.println("Q11");
+		// 컴퓨터 랜덤 가위바위보 값 생성
+		int comp_rsp = r.nextInt(3)+1;
+		int result_rsp = 0;
+		// 입력값으로 가위바위보 받기
+		System.out.println("가위 : 1, 바위 : 2, 보 : 3");
+		String human_rsp = in.nextLine();
+		// 가위바위보 계산
+		result_rsp = comp_rsp - Integer.parseInt(human_rsp);
+		// 조건에 따른 결과문 출력
+		if(result_rsp == 0) System.out.println("Draw!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
+		else if(result_rsp == -1) System.out.println("Human Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
+		else if(result_rsp == 2) System.out.println("Human Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
+		else if(result_rsp == 1) System.out.println("Computer Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
+		else if(result_rsp == -2) System.out.println("Computer Win!\n" + "Human : " + human_rsp + "computer : " + comp_rsp);
+		
+		System.out.println("------------------");
+		
+		// 12. - 못품
+		System.out.println("Q12");
+//		int[] lotto_storage = new int[10000];
+//		for(int i=0; i < lotto_storage.length; i++) {
+//			for(int j = 0; j < lotto.length; j++) {
+//				int num = r.nextInt(45)+1;
+//				lotto[j] = num;
+//			}
+//		}
+		System.out.println("\n------------------");
+		// 특별1.
+		System.out.println("Q특별1");
+		String d = "6/4/3/2/5/1/4/5/6/7/8/9/1/2/3/4/5/6";
+		int[] e = new int[10];
+		char f = ' ';
+		int g = 0;
+		for(int i = 0; i < d.length(); i++) {			
+			if(d.charAt(i) != '/') {
+				e[d.charAt(i)-'0']++;
+			}
+		}
+		// 결과
+		for(int i=0; i<e.length; i++) {
+			System.out.print(i + " ");
+		}
+		System.out.println();
+		for(int i=0; i<e.length; i++) {
+			System.out.print(e[i] + " ");
+		}
+		System.out.println("\n------------------");
+		
+		// 특별2.
+		System.out.println("Q특별2");
+		String h ="67/414/1/23/32/45/54/12/11/232";
+		String j = "";
+		int totalBug = 0;
+		for(int i = 0; i < h.length(); i++) {
+			if(h.charAt(i) != '/') {
+				j += h.charAt(i);
+			}else {
+				totalBug += Integer.parseInt(j);
+				j = "";
+			}
+		}
+		totalBug += Integer.parseInt(j);
+		System.out.println(totalBug);
+		System.out.println("------------------");
 	}
 }
 
