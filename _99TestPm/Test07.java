@@ -1,5 +1,6 @@
 package _99TestPm;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -43,7 +44,7 @@ public class Test07 {
 		System.out.println("Q3---------------------");
 		
 		// 3.
-		for(;true;) {
+		for(;;) {
 			int m = r.nextInt(100) + 1;
 			if(m % 7 == 0) {
 				System.out.println(m + "은/는 행운의 숫자.");
@@ -68,11 +69,85 @@ public class Test07 {
 				continue;
 			}
 		}
-		for (int i = 0; i < arr1.length; i++) {
-			System.out.print(arr1[i] + " ");
+		System.out.println(Arrays.toString(arr1));
+		System.out.println("\nQ5---------------------");
+		
+		// 5. 
+		int[] lotto1 = new int[6];
+		// 랜덤한 번호를 뽑기 위한 반복문
+		for (int i = 0; i < lotto1.length; i++) {
+			lotto1[i] = r.nextInt(45) + 1;
 		}
-		System.out.println("Q5---------------------");
-		// 5.
+		System.out.println(Arrays.toString(lotto1));
+		System.out.println("\nQ6---------------------");		
+		
+		// 6.
+		int[] arr2 = new int[45];
+		int maxCount = 0;
+		int maxLotto = 0;
+		for (int i = 0; i < 10000; i++) {
+			arr2[r.nextInt(45)]++;
+		}
+		System.out.println(Arrays.toString(arr2));
+		for (int i = 0; i < arr2.length; i++) {
+			if(arr2[i] >= maxCount) {
+				maxCount = arr2[i];
+				maxLotto = i;
+			}
+		}
+		System.out.println("오늘의 추천 로또 번호 : " + (maxLotto + 1));
+		System.out.println("Q7---------------------");
+		
+		// 7.
+		int[] jobTime = {40,32,4,16,5,8};
+		int workTime = 4;
+		int index = 0;
+		int maxNum = 0;
+		int maxIndex = 0;
+		// 배열 중 가장 큰 값의 인덱스 찾기
+		for(int i = 0; i < jobTime.length; i++) {
+			if(jobTime[i] > maxNum) {
+				maxNum = jobTime[i];
+				maxIndex = i;
+			}
+		}
+		for(;;) {
+			if(jobTime[index % 6] <= 0) {
+			}else {
+				jobTime[index % 6] -= workTime;
+				System.out.println((index % 6) + "번째 사람 작업장 사용");
+			}
+			index++;
+			if(jobTime[maxIndex] <= 0) {
+				break;
+			}
+		}
+		System.out.println("Q8---------------------");
+				
+		// 8.
+		int[] lotto = new int[6];
+		// 키보드로 부터 입력받기 위한 객체 만들기.
+		// 0번째 번호부터 로또 번호 입력받기
+		for (int i = 0; i < lotto.length; i++) {
+			System.out.println((i + 1) + "번 입력하세요");
+			int o = in.nextInt();  // nextInt는 키보드로 숫자만 가져온다.
+			in.nextLine();  // 버퍼 지우기
+			if(o > 45 || o < 1) {
+				System.out.println("범위 오류");
+				i--;
+			}else {				
+				lotto[i] = o;
+			}
+		}
+		// 로또 번호를 출력하는 반복문
+		for (int i = 0; i < lotto.length; i++) {
+			if (i == lotto.length - 1) { // 마지막 번호
+				System.out.println("보너스 : " + lotto[i]);
+			} else {
+				System.out.println(lotto[i]);
+			}
+		}
+
 	}
 
 }
