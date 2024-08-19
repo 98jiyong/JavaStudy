@@ -7,7 +7,7 @@ public class Test06 {
 
 	public static void main(String[] args) {
 		// 우럭조 
-		// 0.
+		// 0
 		System.out.println("Q0");
 		int[] letter = {8,12,4,13,2,14,4,5};
 		for(int i = 0; i < letter.length; i ++) {
@@ -18,7 +18,7 @@ public class Test06 {
 		System.out.println();
 		System.out.println("------------------");
 		
-		// 1.
+		// 1
 		System.out.println("Q1");
 		int bigNum = 0;
 		int bigIndex = 0;
@@ -31,7 +31,7 @@ public class Test06 {
 		System.out.println(bigIndex);
 		System.out.println("------------------");
 		
-		// 2.
+		// 2
 		System.out.println("Q2");
 		for(int i = 0; i < letter.length; i ++) {
 			if(letter[i] % 2 == 0 && letter[i] > bigNum) {				
@@ -41,7 +41,7 @@ public class Test06 {
 		System.out.println(bigNum);
 		System.out.println("------------------");
 		
-		// 3.
+		// 3
 		System.out.println("Q3");
 		int[] letter1={8,12,3,13,1,14,3,4};
 		String word ="gehoudfkimjnlvy";
@@ -52,7 +52,7 @@ public class Test06 {
 		System.out.println(detail);
 		System.out.println("------------------");
 		
-		// 4.
+		// 4
 		System.out.println("Q4");
 		int[] arr = {1,0,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,1};
 		int cnt = 0;
@@ -71,7 +71,7 @@ public class Test06 {
 		System.out.println(result);
 		System.out.println("------------------");
 		
-		// 5.
+		// 5
 		System.out.println("Q5");
 		Scanner in = new Scanner(System.in);
 		String a  = in.nextLine();
@@ -92,7 +92,7 @@ public class Test06 {
 		}
 		System.out.println("------------------");
 		
-		// 6.
+		// 6
 		System.out.println("Q6");
 		String b ="23-56+45*2-56";
 		String pre_num = "";
@@ -140,7 +140,7 @@ public class Test06 {
 		System.out.println(sum);
 		System.out.println("------------------");
 		
-		// 7.
+		// 7
 		System.out.println("Q7");
 		int[]c = {34,2,35,8,31,45};
 		int replace_a = 0;
@@ -157,7 +157,7 @@ public class Test06 {
 		System.out.println("\n" + c[5]);
 		System.out.println("------------------");
 		
-		// 8.
+		// 8
 		System.out.println("Q8");
 		int[]p = {34,2,35,8,31,45};
 		int replace_b = 0;
@@ -176,7 +176,7 @@ public class Test06 {
 		System.out.println(p[0]);
 		System.out.println("------------------");
 		
-		// 9.
+		// 9
 		System.out.println("Q9");
 		Random r = new Random();  
 		int[] lotto = new int[6];
@@ -187,11 +187,11 @@ public class Test06 {
 		}
 		System.out.println("\n------------------");
 		
-		// 10. -> 못품
+		// 10
 		System.out.println("Q10");
 		System.out.println("\n------------------");
 		
-		// 11.
+		// 11
 		System.out.println("Q11");
 		// 컴퓨터 랜덤 가위바위보 값 생성
 		int comp_rps = r.nextInt(3)+1;
@@ -209,11 +209,11 @@ public class Test06 {
 		else if(result_rps == -2) System.out.println("Computer Win!\n" + "Human : " + human_rps + "computer : " + comp_rps);
 		System.out.println("------------------");
 		
-		// 12. - 못품
+		// 12
 		System.out.println("Q12");
 		System.out.println("\n------------------");
 		
-		// 특별1.
+		// 특별1
 		System.out.println("Q특별1");
 		String d = "6/4/3/2/5/1/4/5/6/7/8/9/1/2/3/4/5/6";
 		int[] e = new int[10];
@@ -234,7 +234,7 @@ public class Test06 {
 		}
 		System.out.println("\n------------------");
 		
-		// 특별2.
+		// 특별2
 		System.out.println("Q특별2");
 		String h ="67/414/1/23/32/45/54/12/11/232";
 		String j = "";
