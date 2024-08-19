@@ -248,6 +248,37 @@ public class Test08 {
 		}
 		System.out.println("가장 긴 터널의 알파벳 : " + max_alphabet);
 		System.out.println("가장 긴 터널의 길이 : " + max_length);
+		
+		// bonus
+		int i = 1;
+		int s = 0;
+		for(;;) {
+			for(int j = 0; j < i*2-1; j++) {
+				if(j == 0) {					
+					if(i == 1) {
+						System.out.print("   ");
+					}else if(i == 2) {
+						System.out.print("  ");
+					}else if(i == 3) {
+						System.out.print(" ");
+					}
+				}
+				System.out.print("*");
+			}
+			System.out.println();
+			if(s == 0) {
+				i++;
+			}
+			if(s == 1) {
+				i--;
+			}
+			if(i == 4) {
+				s = 1;
+			}
+			if(i == 0) {
+				break;
+			}
+		}
 	}
-
+	
 }
