@@ -89,6 +89,8 @@ public class Test09 {
 							}else {							
 								System.out.println(carnum[i] + "는 주차 불가합니다.");
 							}
+						}else {
+							System.out.println(carnum[i] + "는 주차 불가합니다.");
 						}
 					}
 				}
