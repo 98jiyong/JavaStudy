@@ -189,11 +189,12 @@ public class Refactory_Test08 {
 		
 		// 12
 		System.out.println("Q12---------------- ");
-		int i = 4;
+		int max_star = 7; 
+		int i = (max_star / 2) + 1;
 		int s = 0;
 		for(;;) {
 			for(int j = 0; j < i; j++) {
-				if(j >= 7-i ) {										
+				if(j >= max_star-i ) {										
 					System.out.print("*");
 				}else {					
 					System.out.print(" ");
@@ -206,12 +207,13 @@ public class Refactory_Test08 {
 			if(s == 1) {
 				i--;
 			}
-			if(i == 7) {
+			if(i == max_star) {
 				s = 1;
 			}
-			if(i == 3) {
+			if(i == max_star / 2) {
 				break;
 			}
 		}
+		
 	}
 }
