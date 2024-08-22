@@ -95,13 +95,13 @@ public class miniProject01_jiyong {
 				// 게임 문자 랜덤으로 조합
 				// 20240822_정지용_수정
 				for(int k = 0; k < gameTxt.length(); k++) {
-					char t_txt = gameTxt.charAt(r.nextInt(gameTxt.length())); // 첫번째 쓸 변수
-					char r_txt = gameTxt.charAt(r.nextInt(gameTxt.length())); // 두번째부터 쓸 변수
+					char r_txt = gameTxt.charAt(r.nextInt(gameTxt.length())); // 게임 문자열에서 랜덤으로 하나 추출
+					// 밑에 반복문 시작을 위해 첫번째 값을 저장
 					if(randomGameTxt.length() == 0) {
-						randomGameTxt += t_txt;
+						randomGameTxt += r_txt;
 //						System.out.println("첫 단어 : " + randomGameTxt);
 					}
-//					System.out.println(gameTxt);
+					// 인덱스 0 부터 저장된 게임 문자열의 길이까지 반복문 돌리기
 					for(int l = 0; l < randomGameTxt.length(); l++) {
 //						System.out.println("문자 : " + r_txt);
 						if(randomGameTxt.charAt(l) != r_txt) {
@@ -111,14 +111,16 @@ public class miniProject01_jiyong {
 //								System.out.println("같은 랜덤 수 : " + r_txt);
 //								System.out.println(randomGameTxt);
 								k--;
-								break;	
+//								break;	
 							}
 							break;
 						}
+						// 게임 문자열의 마지막 까지 중복 검사가 끝나면 추가
 						if(l == randomGameTxt.length() - 1) {
 							randomGameTxt += r_txt;
 //							System.out.println(randomGameTxt);
 						}
+						// 게임 문자열 안에 섞어서 다 들어갔는지 길이를 비교해 확인
 						if(randomGameTxt.length() == gameTxt.length()) {
 							break;
 						}
@@ -139,7 +141,7 @@ public class miniProject01_jiyong {
 					missWord = "";
 					score += 0;
 				}
-				// 20240822_정지용_오답 개수 카운트
+				// 20240822_정지용_오타 개수 카운트
 				for(int k = 0; k < randomGameTxt.length(); k++) {
 					if(userTxt.charAt(k) != randomGameTxt.charAt(k)) {
 						missCnt++;
@@ -202,10 +204,12 @@ public class miniProject01_jiyong {
 				break;
 			}
 		}
+		
 //		System.out.println(Arrays.toString(ranking)); // 랭킹 확인
 		// 0으로 만들어놓은 총점을 다시 원상복구 작업
 		for(int i = 0; i < userCnt; i++) {
-			userTotalScore[i] = Math.round(((userPoint[i] * 0.5) + userSpeedScore[i] + userCorrectScore[i]) * 100) / 100.0;			
+			userTotalScore[i] = Math.round(((userPoint[i] * 0.5) + 
+					userSpeedScore[i] + userCorrectScore[i]) * 100) / 100.0;			
 		}
 		// 결과
 		System.out.println("총점은 (점수 + 속도 + 정확도)의 환산값 입니다.");
