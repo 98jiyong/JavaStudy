@@ -10,18 +10,20 @@ public class miniProject01 {
 		Random r = new Random();
 		Scanner in = new Scanner(System.in);
 		System.out.println("환영합니다.");
-		System.out.println("몇명이서 진행하나요?(숫자 입력)");
+		System.out.println("게임을 플레이 할 인원수를 설정해주세요.  (숫자 입력)");
 		int userCnt = in.nextInt();
 		in.nextLine();
 		String[] userId = new String[userCnt]; // 아이디를 저장할 배열
 		double[] userSpeed = new double[userCnt]; // 속도를 저장할 배열
 		double[] userCorrect = new double[userCnt]; // 정확도를 저장할 배열
 		int[] userPoint = new int[userCnt]; // 점수를 저장할 배열
-		
+		double[] userSpeedScore = new double[userCnt]; // 속도 점수
+		double[] userCorrectScore = new double[userCnt]; // 정확도 점수
+		double[] userTotalScore = new double[userCnt]; // 총 점수를 저장할 배열
 		for(int i = 0; i < userCnt; i++) {
-			int score = 0; // 기본 점수
-			int bScore = 0; // 보너스 점수
 			int missCnt = 0; // 오답 카운트
+			int score = 0; // 기본 점수
+			
 			String accTxt = "";
 			double questionCnt = 0;
 			double accSpeed = 0;
@@ -48,84 +50,174 @@ public class miniProject01 {
 					"달빛고요", "산속길사이", "구름속바람", "햇살고요", "별빛속길", "달빛속길", "고요한은빛길", "바람속고요", "산속바람결", "푸른바람길"
 			};
 			
-			String[] signArr = new String[200];
+			String[] signArr = new String[180];
 			String sign = "~?!@#$%^&*()-_+=[]{}<>";
 			String word2 = "";
 			// 특수문자 배열에 집어넣기
+			// 20240822_정지용_수정
 			for(int j = 0; j < signArr.length; j++) {
 				for(int k = 0; k < 3; k++) {
-					word2 += sign.charAt(r.nextInt(sign.length()));
+					char t_sign = sign.charAt(r.nextInt(sign.length()));
+					if(k == 0) {						
+						word2 += sign.charAt(r.nextInt(sign.length()));
+					}
+					for(int l = 0; l < word2.length(); l++) {
+						if(word2.charAt(l) == t_sign) {							
+							if(k != 0) {
+								k--;
+								break;	
+							}
+							break;
+						}
+						if(l == word2.length() - 1) {
+							word2 += t_sign;
+						}
+						if(word2.length() == 3) {
+							break;
+						}
+					}
 				}
 				signArr[j] = word2;
 				word2 = "";
 			}
-			for(int j = 0; j < 3; j++) {
+//			System.out.println(Arrays.toString(signArr));
+			for(int j = 0; j < 10; j++) {
 				
 				String korWord = ""; // korArr에서 무작위로 받을 값
 				String signWord = ""; // signArr에서 무작위로 받을 값
 				String gameTxt = ""; // korWord + signWord
+				String randomGameTxt = "";
+				String missWord = "없음"; // 오타를 저장할 변수
 				
 				korWord = korArr[r.nextInt(korArr.length)];
 				signWord = signArr[r.nextInt(signArr.length)];
 				gameTxt = korWord + signWord;
-				System.out.println(gameTxt);
+				// 게임 문자 랜덤으로 조합
+				// 20240822_정지용_수정
+				for(int k = 0; k < gameTxt.length(); k++) {
+					char t_txt = gameTxt.charAt(r.nextInt(gameTxt.length())); // 첫번째 쓸 변수
+					char r_txt = gameTxt.charAt(r.nextInt(gameTxt.length())); // 두번째부터 쓸 변수
+					if(randomGameTxt.length() == 0) {
+						randomGameTxt += t_txt;
+//						System.out.println("첫 단어 : " + randomGameTxt);
+					}
+//					System.out.println(gameTxt);
+					for(int l = 0; l < randomGameTxt.length(); l++) {
+//						System.out.println("문자 : " + r_txt);
+						if(randomGameTxt.charAt(l) != r_txt) {
+//							System.out.println(randomGameTxt.charAt(l) + " 문자가 다름 " + r_txt);
+						}else {
+							if(k != 0) {
+//								System.out.println("같은 랜덤 수 : " + r_txt);
+//								System.out.println(randomGameTxt);
+								k--;
+								break;	
+							}
+							break;
+						}
+						if(l == randomGameTxt.length() - 1) {
+							randomGameTxt += r_txt;
+//							System.out.println(randomGameTxt);
+						}
+						if(randomGameTxt.length() == gameTxt.length()) {
+							break;
+						}
+					}
+				}
+				System.out.println(randomGameTxt);
 				long beforeTime = System.currentTimeMillis();
 				String userTxt = in.nextLine(); // 값을 입력받을 변수
 				long afterTime = System.currentTimeMillis();
 				long secDiffTime = (afterTime - beforeTime)/1000;
-				String userKorTxt = ""; // 입력받은 값에 한글만 저장할 변수
-				String userSignTxt = ""; // 입력받은 값에 특수문자만 저장할 변수
 				questionCnt++;
 				accSpeed += secDiffTime;
 				accTxt += gameTxt;
-				for(int k = 0; k < userTxt.length(); k++) {
-					// m번째 글자가 아스키코드 값 127보다 작으면
-					if(userTxt.charAt(k) < 127) {
-						// 특수문자 저장
-						userSignTxt += userTxt.charAt(k);
-					}else {
-						userKorTxt += userTxt.charAt(k);
-					}
-				}
-				if(korWord.equals(userKorTxt)) {
-					score += 5;
+				
+				if(userTxt.equals(randomGameTxt)) {
+					score += 10;
 				}else {
+					missWord = "";
 					score += 0;
 				}
-				for(int k = 0; k < korWord.length(); k++) {
-					if(userKorTxt.charAt(k) != korWord.charAt(k)) {
+				// 20240822_정지용_오답 개수 카운트
+				for(int k = 0; k < randomGameTxt.length(); k++) {
+					if(userTxt.charAt(k) != randomGameTxt.charAt(k)) {
 						missCnt++;
+						missWord += userTxt.charAt(k) + " ";
 					}
 				}
-				for(int k = 0; k < signWord.length(); k++) {
-					if(userSignTxt.charAt(k) == signWord.charAt(k)) {
-						bScore++;
-					}else {
-						missCnt++;
-					}
-				}
-				userSpeed[i] = Math.round((accSpeed / questionCnt) * 1000) / 1000.0; // 소수점 3자리까지 끊어쓰기
-				userCorrect[i] = Math.round(((1 - (double) missCnt / accTxt.length()) * 100) * 1000) / 1000.0; // 소수점 3자리까지 끊어쓰기
-				userPoint[i] =  score + bScore; // 추가로 타자속도와 정확도에 대한 점수 기준을 찾고 그것에 대해 점수 추가
-				System.out.print("시간 : "+secDiffTime + "초 / ");
-//				System.out.println("한글 : " + userKorTxt);
-//				System.out.println("특수문자 : " + userSignTxt);
-				System.out.print("오타 : " + missCnt + "자 / ");
-				System.out.print("점수 : "+ score);
-//				System.out.println("보너스 점수 : " + bScore);
-				System.out.println();
+				userSpeed[i] = Math.round((accSpeed / questionCnt) * 10) / 10.0; // 소수점 3자리까지 끊어쓰기
+				userCorrect[i] = Math.round(((1 - (double) missCnt / accTxt.length()) * 100) * 10) / 10.0; // 소수점 3자리까지 끊어쓰기
+				userPoint[i] =  score; // 추가로 타자속도와 정확도에 대한 점수 기준을 찾고 그것에 대해 점수 추가
+				System.out.print("타이핑 시간 : "+secDiffTime + "초 / ");
+				System.out.print("오타 : " + missWord + " / ");
+				System.out.print("현재 점수 : "+ score);
+				System.out.println("\n");
 			}
-			System.out.println("타자속도 : " + userSpeed[i]);
-			System.out.println("정확도 : " + userCorrect[i]);
-			System.out.println("점수 : " + userPoint[i]);
 			
 		}
-		
-		// 200개의 랜덤한 특수문자 만들기 
-		// 특수문자 집합 생성
-	
-//		System.out.println(Arrays.toString(signArr));
-		
+		// 타자속도 점수 환산
+		for(int i = 0; i < userCnt; i++) {
+			if(userSpeed[i] < 2) {
+				userSpeedScore[i] = 100 * 0.2;
+			}else if(userSpeed[i] < 4) {
+				userSpeedScore[i] = 80 * 0.2;
+			}else if(userSpeed[i] < 6) {
+				userSpeedScore[i] = 60 * 0.2;
+			}else if(userSpeed[i] < 8) {
+				userSpeedScore[i] = 40 * 0.2;
+			}else if(userSpeed[i] < 10) {
+				userSpeedScore[i] = 20 * 0.2;
+			}else {
+				userSpeedScore[i] = 0;
+			}
+		}
+		// 정확도 점수 환산
+		for(int i = 0; i < userCnt; i++) {
+			userCorrectScore[i] = Math.round((userCorrect[i] * 0.3) * 10) / 10.0;
+		}
+		// 총점 입력 
+		for(int i = 0; i < userCnt; i++) {
+			userTotalScore[i] = Math.round(((userPoint[i] * 0.5) + userSpeedScore[i] + userCorrectScore[i]) * 100) / 100.0;			
+		}
+		// 20240822_정지용_순위를 매기기 위한 반복문
+		int [] ranking = new int[userCnt];
+		double max_num = 0;
+		int max_index = 0;
+		int x = 0;
+		for(int i = 0; i < userCnt; i++) {
+			if(userTotalScore[i] > max_num) {
+				max_num = userTotalScore[i];
+				max_index = i;
+			}
+			if(i == userCnt - 1) {
+				ranking[x] = max_index;
+				userTotalScore[max_index] = 0;
+				max_num = 0;
+				max_index = 0;
+				x++;
+				i = -1;
+			}
+			if(x == userCnt) {
+				break;
+			}
+		}
+//		System.out.println(Arrays.toString(ranking)); // 랭킹 확인
+		// 0으로 만들어놓은 총점을 다시 원상복구 작업
+		for(int i = 0; i < userCnt; i++) {
+			userTotalScore[i] = Math.round(((userPoint[i] * 0.5) + userSpeedScore[i] + userCorrectScore[i]) * 100) / 100.0;			
+		}
+		// 결과
+		System.out.println("총점은 (점수 + 속도 + 정확도)의 환산값 입니다.");
+		System.out.println("이름   총점   점수   속도   정확도");
+		System.out.println("---------------------------");
+		for(int i = 0; i < userCnt; i++) {			
+			System.out.println(userId[ranking[i]] + "   " + userTotalScore[ranking[i]] + 
+					"  " + userPoint[ranking[i]] + "   " + userSpeed[ranking[i]] + 
+					"   " + userCorrect[ranking[i]]);
+		}
+
+					
 		
 		
 	}
