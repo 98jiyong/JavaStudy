@@ -81,7 +81,7 @@ public class miniProject01_jiyong {
 				word2 = "";
 			}
 //			System.out.println(Arrays.toString(signArr));
-			for(int j = 0; j < 10; j++) {
+			for(int j = 0; j < 5; j++) {
 				
 				String korWord = ""; // korArr에서 무작위로 받을 값
 				String signWord = ""; // signArr에서 무작위로 받을 값
@@ -131,10 +131,10 @@ public class miniProject01_jiyong {
 				long secDiffTime = (afterTime - beforeTime)/1000;
 				questionCnt++;
 				accSpeed += secDiffTime;
-				accTxt += gameTxt;
-				
+				accTxt += userTxt;
+				// 20240822_정지용_점수계산
 				if(userTxt.equals(randomGameTxt)) {
-					score += 10;
+					score += 20;
 				}else {
 					missWord = "";
 					score += 0;
@@ -146,9 +146,9 @@ public class miniProject01_jiyong {
 						missWord += userTxt.charAt(k) + " ";
 					}
 				}
-				userSpeed[i] = Math.round((accSpeed / questionCnt) * 10) / 10.0; // 소수점 3자리까지 끊어쓰기
-				userCorrect[i] = Math.round(((1 - (double) missCnt / accTxt.length()) * 100) * 10) / 10.0; // 소수점 3자리까지 끊어쓰기
-				userPoint[i] =  score; // 추가로 타자속도와 정확도에 대한 점수 기준을 찾고 그것에 대해 점수 추가
+				userSpeed[i] = Math.round((accSpeed / questionCnt) * 10) / 10.0; // 소수점 1자리까지 끊어쓰기
+				userCorrect[i] = Math.round(((1 - (double) missCnt / accTxt.length()) * 100) * 10) / 10.0; // 소수점 1자리까지 끊어쓰기
+				userPoint[i] =  score; 
 				System.out.print("타이핑 시간 : "+secDiffTime + "초 / ");
 				System.out.print("오타 : " + missWord + " / ");
 				System.out.print("현재 점수 : "+ score);

@@ -78,10 +78,10 @@ public class miniProject01_merge {
 					long secDiffTime = (afterTime - beforeTime)/1000;
 					questionCnt++;
 					accSpeed += secDiffTime;
-					accTxt += gameTxt;
+					accTxt += userTxt;
 					// 20240822_원진호_점수 계산하는 기능
 					if(userTxt.equals(gameTxt)) {
-						score += 10;
+						score += 20;
 					}else {
 						missWord = "";
 						score += 0;
