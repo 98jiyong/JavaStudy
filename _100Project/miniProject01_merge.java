@@ -219,7 +219,7 @@ public class miniProject01_merge {
 					accTxt += gameTxt;
 					// 20240822_정지용_점수 계산
 					if(userTxt.equals(randomGameTxt)) {
-						score += 10;
+						score += 20;
 					}else {
 						missWord = "";
 						score += 0;
