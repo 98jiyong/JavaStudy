@@ -165,7 +165,6 @@ public class miniProject01_merge {
 					signArr[j] = word2;
 					word2 = "";
 				}
-//			System.out.println(Arrays.toString(signArr));
 				for(int j = 0; j < 5; j++) {
 					
 					String korWord = ""; // korArr에서 무작위로 받을 값
@@ -184,17 +183,11 @@ public class miniProject01_merge {
 						char r_txt = gameTxt.charAt(r.nextInt(gameTxt.length())); // 두번째부터 쓸 변수
 						if(randomGameTxt.length() == 0) {
 							randomGameTxt += t_txt;
-//						System.out.println("첫 단어 : " + randomGameTxt);
 						}
-//					System.out.println(gameTxt);
 						for(int l = 0; l < randomGameTxt.length(); l++) {
-//						System.out.println("문자 : " + r_txt);
 							if(randomGameTxt.charAt(l) != r_txt) {
-//							System.out.println(randomGameTxt.charAt(l) + " 문자가 다름 " + r_txt);
 							}else {
 								if(k != 0) {
-//								System.out.println("같은 랜덤 수 : " + r_txt);
-//								System.out.println(randomGameTxt);
 									k--;
 									break;	
 								}
@@ -202,7 +195,6 @@ public class miniProject01_merge {
 							}
 							if(l == randomGameTxt.length() - 1) {
 								randomGameTxt += r_txt;
-//							System.out.println(randomGameTxt);
 							}
 							if(randomGameTxt.length() == gameTxt.length()) {
 								break;
@@ -290,7 +282,6 @@ public class miniProject01_merge {
 				break;
 			}
 		}
-//		System.out.println(Arrays.toString(ranking)); // 랭킹 확인
 		// 20240822_원진호_총점이 0이 되버려서 다시 원상복구 작업
 		for(int i = 0; i < userCnt; i++) {
 			userTotalScore[i] = Math.round(((userPoint[i] * 0.5) + userSpeedScore[i] + userCorrectScore[i]) * 100) / 100.0;			
