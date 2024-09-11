@@ -1,7 +1,11 @@
 package _06twoDimensionalArray;
 
 public class _08_Test {
-
+	/* 바꿔볼 계획 -추석
+	 * 처음부터 끝까지 한번에 비교 
+ 	 * 만약 숫자가 다르면 비교값에 다른 숫자를 집어넣어서 비교 재개 
+	 * 같은 숫자가 3개이상 넘어간다면 출력 
+	 */
 	public static void main(String[] args) {
 		int[][] game = {
 				{1,1,0,2},
@@ -25,7 +29,7 @@ public class _08_Test {
 					}else {
 						if(cnt >= 3) {
 							for(int l = 0; l < cnt; l++) {
-								System.out.print("("+ (i+1) +","+ (j+l+1) +")");
+								System.out.print("("+ (j+l+1) +","+ (i+1) +")");
 							}
 							System.out.println(" " + del_num + " 제거");
 						}
@@ -37,7 +41,7 @@ public class _08_Test {
 					if(k == game[i].length-1) {
 						if(cnt >= 3) {
 							for(int l = 0; l < cnt; l++) {
-								System.out.print("("+ (i+1) +","+ (j+l+1) +")");
+								System.out.print("("+ (j+l+1) +","+ (i+1) +")");
 							}
 							System.out.println(" " + del_num + " 제거");
 							j = j + jmp-1;
