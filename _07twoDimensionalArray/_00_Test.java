@@ -42,7 +42,7 @@ public class _00_Test {
 			}			
 		}
 		
-		// 화면 출력
+		// 결과 출력
 		for(int i = 0; i < blockRow; i++) {
 			for(int j = 0; j < blockCol; j++) {
 				System.out.print(nowBlock[i][j] + " ");
