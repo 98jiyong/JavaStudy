@@ -15,25 +15,23 @@ public class _03_Test {
 		int num = 1;
 		
 		for(int i=0; i<a.length; i++) {
-			if(i % 2 == 0) {
-				for(int j=0 ; j<a[0].length; j++) {
+			for(int j=0 ; j<a[0].length; j++) {
+				if(i % 2 == 0) {
 					a[i][j] = num;
 					num++;
-				}				
-			}else {
-				for(int j=a[0].length -1 ; j>=0; j--) {
-					 a[i][j] = num;
-					 num++;
+				}else {
+					a[i][a[0].length-1-j]=num;
+					num++;
 				}
-			}
+			}				
 		}
 		
 		// 결과 출력
 		for(int i=0; i<a.length; i++) {
 			for(int j=0; j<a[0].length; j++) {
-				System.out.print(a[i][j] + " ");
+				System.out.printf("%4d",a[i][j]);
 			}
-			System.out.println();
+			System.out.println("\n");
 		}
 
 	}

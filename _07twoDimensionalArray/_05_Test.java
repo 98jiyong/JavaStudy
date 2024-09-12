@@ -13,49 +13,67 @@ public class _05_Test {
 		int[][] a = new int[4][5];
 		int num = 1;
 		// 초기값과 끝값을 설정하기 위한 변수 생성
-		int w = 0;
 		int x = 0;
 		int y = 0;
 		int z = 0;
+
 		
-		// 가로줄 순서대로의 행과 가로줄 거꾸로의 행이 만날 때 종료 
-		for(;a.length - (z + x) > 0;) {
+		// 
+		while(a.length - (z + x) > 0) {
 			
-			// 가로 줄을 순서대로 구하는 공식
-			for(int j=x; j<a[0].length - w; j++) {
-				a[y][j] = num;
+			// 가로 줄을 순서대로
+			// x(안으로 갈수록 입력되는 개수가 줄기 때문)부터 
+			// 길이 - y(안으로 갈수록 입력되는 개수가 줄기 때문)까지
+			// 행을 고정하고 열 값 입력
+			for(int j=x; j<a[0].length - y; j++) {
+				a[z][j] = num;
 				num++;
 			}
 			x++;
 
-			// 세로 줄을 순서대로 구하는 공식
+			// 세로 줄을 순서대로
+			// 위에서 세로줄의 한칸을 썼으니 한칸 다음으로 시작
+			// x부터 길이 - z 까지 열을 고정하고 행 값 입력
 			for(int j=x; j<a.length-z; j++) {
-				a[j][a[0].length-1-y] = num;
+				a[j][a[0].length-1-z] = num;
 				num++;
 			}
-			z++;
 
 			// 가로 줄을 거꾸로 구하는 방식
-			for(int j=a[0].length-x-1; j>=w; j--) {
-				a[a.length-y-1][j]=num;
-				num++;
+			// 똑같이 가로줄에서 한칸을 제외한 다음 진행
+			// 시작위치 : 열의 끝에서 x만큼 뺀 위치
+			// 값을 감소하면서 거꾸로 행을 고정하고 열 값 입력
+			// 행 혹은 열이 홀수이면 원하는대로 값이 나오지 않기 때문에
+			// 작업하고있는 행이 마지막으로 실행하는 가운데 행과 같지않을때
+			// 작업을 진행하고 같으면 종료
+			for(int j=a[0].length-1-x; j>=y; j--) {
+				if(a.length-z-1!=(a.length-1)/2) {
+					a[a.length-z-1][j]=num;
+					num++;
+				}
 			}
-			w++;
-			
+			y++;
 			// 세로 줄을 거꾸로 구하는 방식
-			for(int j=a.length-1-x; j>=w; j--) {
-				a[j][y]=num;
-				num++;
+			// 양쪽에서 한칸씩 사용하고있기 때문에 조건에 같은 x를 사용
+			// 값을 증가하면서 순서대로 행을 고정하고 열 값 입력
+			// 행 혹은 열이 홀수이면 원하는대로 값이 나오지 않기 때문에
+			// 작업하고있는 행이 마지막으로 실행하는 가운데 행과 같지않을때
+			// 작업을 진행하고 같으면 종료
+			for(int j=a.length-1-x; j>=x; j--) {
+				if(z != (a[0].length-1)/2) {
+					a[j][z]=num;
+					num++;
+				}
 			}
-			y++;			
+			z++;			
 		}
 		
 		// 결과 출력
 		for(int i=0; i<a.length; i++) {
 			for(int j=0; j<a[0].length; j++) {
-				System.out.print(a[i][j] + " ");
+				System.out.printf("%4d",a[i][j]);
 			}
-			System.out.println();
+			System.out.println("\n");
 		}
 	}
 }
