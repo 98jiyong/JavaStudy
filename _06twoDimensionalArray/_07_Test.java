@@ -5,6 +5,8 @@ public class _07_Test {
 	 * 처음부터 끝까지 한번에 비교 
  	 * 만약 숫자가 다르면 비교값에 다른 숫자를 집어넣어서 비교 재개 
 	 * 같은 숫자가 3개이상 넘어간다면 출력 
+	 * 제거할 숫자의 i와 j 좌표
+	 * 
 	 */
 	public static void main(String[] args) {
 		int[][] game = {
