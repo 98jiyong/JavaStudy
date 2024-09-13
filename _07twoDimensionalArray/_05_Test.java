@@ -26,8 +26,7 @@ public class _05_Test {
 			// 길이 - y(안으로 갈수록 입력되는 개수가 줄기 때문)까지
 			// 행을 고정하고 열 값 입력
 			for(int j=x; j<a[0].length - y; j++) {
-				a[z][j] = num;
-				num++;
+				a[z][j] = num++;
 			}
 			x++;
 
@@ -35,8 +34,7 @@ public class _05_Test {
 			// 위에서 세로줄의 한칸을 썼으니 한칸 다음으로 시작
 			// x부터 길이 - z 까지 열을 고정하고 행 값 입력
 			for(int j=x; j<a.length-z; j++) {
-				a[j][a[0].length-1-z] = num;
-				num++;
+				a[j][a[0].length-1-z] = num++;
 			}
 
 			// 가로 줄을 거꾸로 구하는 방식
@@ -48,8 +46,7 @@ public class _05_Test {
 			// 작업을 진행하고 같으면 종료
 			for(int j=a[0].length-1-x; j>=y; j--) {
 				if(a.length-z-1!=(a.length-1)/2) {
-					a[a.length-z-1][j]=num;
-					num++;
+					a[a.length-z-1][j]=num++;
 				}
 			}
 			y++;
@@ -61,8 +58,7 @@ public class _05_Test {
 			// 작업을 진행하고 같으면 종료
 			for(int j=a.length-1-x; j>=x; j--) {
 				if(z != (a[0].length-1)/2) {
-					a[j][z]=num;
-					num++;
+					a[j][z]=num++;
 				}
 			}
 			z++;			

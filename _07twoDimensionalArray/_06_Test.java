@@ -32,7 +32,7 @@ public class _06_Test {
 		int bRowLen = b[0].length-1; 
 		int bColLen = b.length-1;
 		
-		// 로직을 여러번 돌리기 위한 반복문
+		// 로직을 여러번 실행하기 위한 반복문
 		// 5 X 5 2차원 배열이기 때문에 맨 가운데 숫자를 제외하고 
 		// 2번의 테두리만 돌면 되기 떄문에 
 		// 0부터 bColLen/2 => 2까지 1씩 증가로 설정

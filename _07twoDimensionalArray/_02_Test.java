@@ -13,9 +13,8 @@ public class _02_Test {
 		int num = 1;
 				
 		for(int i=a.length-1; i>=0; i--) {
-			for(int j=a[0].length -1 ; j>=0; j--) {
-				 a[i][j] = num;
-				 num++;
+			for(int j=a[0].length-1 ; j>=0; j--) {
+				 a[i][j] = num++;
 			}
 		}
 		

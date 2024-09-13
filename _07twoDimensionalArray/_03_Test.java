@@ -17,11 +17,9 @@ public class _03_Test {
 		for(int i=0; i<a.length; i++) {
 			for(int j=0 ; j<a[0].length; j++) {
 				if(i % 2 == 0) {
-					a[i][j] = num;
-					num++;
+					a[i][j] = num++;
 				}else {
-					a[i][a[0].length-1-j]=num;
-					num++;
+					a[i][a[0].length-1-j]=num++;
 				}
 			}				
 		}
