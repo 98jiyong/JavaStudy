@@ -15,7 +15,7 @@ public class _09_Test {
 		Scanner in = new Scanner(System.in);
 		Random r = new Random();
 		int[][] game = {
-				{1,1,0,2},
+				{1,1,1,2},
 				{3,2,1,2},
 				{0,0,0,2},
 				{4,4,4,4},
@@ -27,7 +27,7 @@ public class _09_Test {
 		int total_cnt = 0;
 		int left_x = 0;
 		int right_x = 0;
-		int del_line = 0;
+		int del_line = 999;
 
 		// 게임판의 행과 열의 길이 확인 
 		System.out.println("열의 길이 : " + game.length);
@@ -105,7 +105,39 @@ public class _09_Test {
 				}
 			}
 		}
-		System.out.println("지워야하는 줄 : " + (del_line + 1));
+		System.out.println("지워야하는 줄의 인덱스 : " + del_line);
+		// 지워야 하는 줄이 있다면 
+		if(del_line != 999) {
+			// 999 값들을 위로 올리는 반복문
+			for(int i=del_line; i>=1; i--) {
+				for(int j=0; j<game[0].length; j++) {
+					if(game[i][j] == 999) {
+						game[i][j] = game[i-1][j];
+						game[i-1][j] = 999;
+					}
+				}
+			}
+			// 위로 올라온 999 값들을 랜덤수로 변경
+			for(int i=0; i<game[0].length; i++) {
+				if(game[0][i] == 999) {
+					game[0][i] = r.nextInt(10);
+				}
+			}
+		}
+		// 지워야 하는 줄이 있다면 
+		else {
+			// 종료			
+			System.out.println("지워야 하는 줄이 없습니다.");
+		}
+		
+		System.out.println();
+		for(int i = 0; i<game.length; i++) {
+			for(int j=0; j<game[0].length; j++) {
+				System.out.print(game[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
 		// 20240914_지워야하는 줄의 위치까지 확인 완료
 		// 20240914_추가로 위치에서부터 위로 올리고 랜덤수로 대체까지 작업 진행 
 		// 999가 있는 행의 인덱스가 0이라면 바로 랜덤 값으로 대체
