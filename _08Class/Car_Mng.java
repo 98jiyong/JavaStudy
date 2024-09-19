@@ -9,6 +9,7 @@ public class Car_Mng {
 	Car_Obj[] clist = new Car_Obj[7];
 	// 자동차수를 세는 변수 cnt를 생성
 	int cnt = 0;
+	int temp = 0;
 	Car_Mng(){
 		while(true) {
 			System.out.println("메뉴를 선택하세요.");
@@ -29,9 +30,11 @@ public class Car_Mng {
 				delete();
 			}else if(selNum == 4) {
 				allList();
-			}else {
+			}else if(selNum == 5){
 				System.out.println("종료합니다.");
 				break;
+			}else {
+				System.out.println("1 ~ 5 사이의 숫자를 입력하세요.");
 			}
 		}
 	}
@@ -52,7 +55,7 @@ public class Car_Mng {
 			car.name = in.nextLine();
 			System.out.println("전화번호를 입력하세요");
 			car.number = in.nextLine();
-			for(int i=0; i<clist.length; i++) {
+			for(int i=0; i<clist.length; i++) { 
 				if(clist[i] == null) {
 					clist[i]=car;
 					break;
@@ -88,6 +91,7 @@ public class Car_Mng {
 	// cnt값이 0이 아니라면 리스트 안에 있는 차 번호와 일치하는 자동차를 삭제
 	// 삭제했을 시 다른 차들이 등록 할 수 있게 cnt값을 1씩 감소
 	public void delete() {
+		temp = cnt;
 		if(cnt == 0) {
 			System.out.println("삭제할 자동차가 없습니다.");
 		}else {
@@ -97,27 +101,26 @@ public class Car_Mng {
 				if(clist[i]!= null) {
 					if(del_carNum.equals(clist[i].carNum)) {
 						clist[i] = null;
+						cnt--;
 						break;
 					}
 				}
-				// 배열의 끝까지 조회했을 경우 일치하는 차 번호가 없을때
-				if(i == clist.length-1) {				
-					System.out.println("차 번호가 맞는지 다시 확인해주세요.");					
-				}
 			}
-			cnt--;
+			// 배열의 끝까지 조회했을 경우 일치하는 차 번호가 없을때
+			if(temp == cnt) {				
+				System.out.println("차 번호가 맞는지 다시 확인해주세요.");					
+			}
 		}
 	}
 	// 전체보기
 	public void allList() {
 		System.out.println("전체보기");
-		System.out.println("--- info ---");
+		System.out.println("----- info -----");
 		for(int i=0; i<clist.length; i++) {
 			if(clist[i] != null) {
 				clist[i].prt();
-				System.out.println();
+				System.out.println("===========================");
 			}
 		}
 	}
-
 }
