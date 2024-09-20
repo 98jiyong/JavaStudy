@@ -12,31 +12,38 @@ public class Car_Mng {
 	int temp = 0;
 	Car_Mng(){
 		while(true) {
-			System.out.println("메뉴를 선택하세요.");
-			System.out.println("1. 등록");
-			System.out.println("2. 조회");
-			System.out.println("3. 삭제");
-			System.out.println("4. 전체보기");
-			System.out.println("5. 종료");
+			menu();
 			System.out.print("선택 >> ");
 			int selNum = in.nextInt();
 			in.nextLine();
-			System.out.println(selNum + "을 선택함");
+			System.out.println(selNum + "을 선택");
 			if(selNum == 1) {
 				enroll();
 			}else if(selNum == 2) {
 				select();
 			}else if(selNum == 3) {
-				delete();
+				modify();
 			}else if(selNum == 4) {
-				allList();
+				delete();
 			}else if(selNum == 5){
+				allList();
+			}else if(selNum == 6){
 				System.out.println("종료합니다.");
 				break;
-			}else {
+			}else {				
 				System.out.println("1 ~ 5 사이의 숫자를 입력하세요.");
 			}
 		}
+	}
+	// 메뉴
+	public void menu() {
+		System.out.println("메뉴를 선택하세요.");
+		System.out.println("1. 등록");
+		System.out.println("2. 조회");
+		System.out.println("3. 변경");
+		System.out.println("4. 삭제");
+		System.out.println("5. 전체");
+		System.out.println("6. 종료");
 	}
 	// 등록
 	// 주차가능한 자동차 수 => 7대 
@@ -67,22 +74,56 @@ public class Car_Mng {
 	// 조회
 	// 차 번호를 조회하면 이름과 연락처를 표시
 	public void select() {
-		System.out.println("자동차 조회");
-		System.out.println("차 번호를 입력하세요");
-		String comp_carNum = in.nextLine();
-		for(int i=0; i<clist.length; i++) {
-			if(clist[i]!= null) {
-				if(comp_carNum.equals(clist[i].carNum)) {
-					clist[i].prt();
-					break;
+		temp = cnt;
+		if(cnt == 0) {
+			System.out.println("변경할 자동차가 없습니다.");
+		}else {
+			System.out.println("자동차 조회");
+			System.out.println("차 번호를 입력하세요");
+			String comp_carNum = in.nextLine();
+			for(int i=0; i<clist.length; i++) {
+				if(clist[i]!= null) {
+					if(comp_carNum.equals(clist[i].carNum)) {
+						clist[i].prt();
+						temp++;
+						break;
+					}
 				}
+				// 배열의 끝까지 조회했을 경우 일치하는 차 번호가 없을때
 			}
-			// 배열의 끝까지 조회했을 경우 일치하는 차 번호가 없을때
-			if(i == clist.length-1) {				
+			if(temp == cnt) {				
 				System.out.println("차 번호가 맞는지 다시 확인해주세요.");					
 			}
 		}
 		
+	}
+	// 변경
+	public void modify() {
+		temp = cnt;
+		if(cnt == 0) {
+			System.out.println("삭제할 자동차가 없습니다.");
+		}else {
+			System.out.println("삭제할 자동차 번호를 입력해주세요.");
+			String del_carNum = in.nextLine();
+			for(int i=0; i<clist.length; i++) {
+				if(clist[i]!= null) {
+					if(del_carNum.equals(clist[i].carNum)) {
+						System.out.println("변경할 소유주의 이름을 입력하세요.");
+						String newName = in.nextLine();
+						System.out.println("변경할 소유주의 전화번호를 입력하세요.");
+						String newNumber = in.nextLine();
+						clist[i].name = newName;
+						clist[i].number = newNumber;
+						temp++;
+						break;
+					}
+				}
+			}
+			// 배열의 끝까지 조회했을 경우 일치하는 차 번호가 없을때
+			if(temp == cnt) {				
+				System.out.println("차 번호가 맞는지 다시 확인해주세요.");					
+			}
+		}
 	}
 	// 삭제
 	// cnt값을 확인해 등록된 차가 있는지 확인
@@ -102,6 +143,7 @@ public class Car_Mng {
 					if(del_carNum.equals(clist[i].carNum)) {
 						clist[i] = null;
 						cnt--;
+						temp++;
 						break;
 					}
 				}
