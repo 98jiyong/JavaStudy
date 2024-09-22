@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class train_Mng {
 	
 	train_Obj[] tlist = new train_Obj[5]; // 기차 객체를 담을 길이가 5인 배열 생성
-	
+	train_Obj[] flist = new train_Obj[5]; // 수리가 필요한 기차 배열 생성
 	String[] tNum_list = {"1111","2222","3333","4444"};
 	Scanner sc = new Scanner(System.in);
 	String trainNumber = null;
@@ -26,12 +26,14 @@ public class train_Mng {
 			}else if(selNum == 2) {
 				modify();
 			}else if(selNum == 3) {
-				overall();
+				fix();
 			}else if(selNum == 4) {
+				overall();
+			}else if(selNum == 5) {
 				System.out.println("감사합니다...");
 				break;
 			}else {				
-				System.out.println("1에서 4사이의 값을 입력해주세요...");
+				System.out.println("1에서 5사이의 값을 입력해주세요...");
 			}
 		}
 	}
@@ -40,8 +42,9 @@ public class train_Mng {
 		System.out.println("메뉴");
 		System.out.println("1. 등록");
 		System.out.println("2. 수정");
-		System.out.println("3. 전체");
-		System.out.println("4. 종료");
+		System.out.println("3. 수리");
+		System.out.println("4. 전체");
+		System.out.println("5. 종료");
 	}
 	
 	public void enroll() {
@@ -141,8 +144,29 @@ public class train_Mng {
 			}
 		}
 	}
+	public void fix() {
+		System.out.println("수리가 필요한 기차번호를 입력하세요.");
+		String fixtNum = sc.nextLine();
+		for(int i=0; i<tlist.length; i++) {
+			if(tlist[i] != null) {
+				if(fixtNum.equals(tlist[i].tNum)) {
+					for(int j=0; j<flist.length; j++) {
+						if(flist[j] == null) {
+							flist[j] = tlist[i];
+							break;
+						}
+					}
+					tlist[i] = null;
+					cnt--;
+				}
+			}
+		}
+	}
+	
 	public void overall() {
 		int tCnt = 0;
+		int fCnt = 0;
+		System.out.println("운행중인 기차");
 		System.out.println("기차번호 : 기차종류 : 기차시간");
 		System.out.println("-------------------");
 		for(int i=0; i<tlist.length; i++) {
@@ -153,5 +177,17 @@ public class train_Mng {
 			}
 		}
 		System.out.println("총 " + tCnt + "건 조회\n");
+		
+		System.out.println("수리중인 기차");
+		System.out.println("기차번호 : 기차종류 : 기차시간");
+		System.out.println("-------------------");
+		for(int i=0; i<flist.length; i++) {
+			if(flist[i] != null) {
+				fCnt++;
+				flist[i].show();
+				System.out.println();
+			}
+		}
+		System.out.println("총 " + fCnt + "건 조회\n");
 	}
 }
