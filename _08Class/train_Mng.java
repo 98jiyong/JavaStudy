@@ -8,12 +8,12 @@ public class train_Mng {
 	train_Obj[] flist = new train_Obj[5]; // 수리가 필요한 기차 배열 생성
 	String[] tNum_list = {"1111","2222","3333","4444"};
 	Scanner sc = new Scanner(System.in);
-	String trainNumber = null;
-	String trainTime = null;
 	int temp = 0;
 	int cnt = 0;
 	
-	
+	// default 접근 제한
+	// 같은 패키지에서는 아무런 제한 없이 생성자 호출 가능 but 다른 패키지에서는 호출 X
+	// 호출자에게 값을 리턴하므로 void 사용 X
 	train_Mng(){
 		while(true) {
 			menu();
@@ -48,6 +48,8 @@ public class train_Mng {
 	}
 	
 	public void enroll() {
+		String trainNumber = null;
+		String trainTime = null;
 		boolean checkReg = true;
 		if(cnt == tlist.length) {
 			System.out.println("더 이상 등록할 수 없습니다...");

@@ -2,6 +2,9 @@ package _08Class;
 
 public class train_Obj {
 	
+	// public? private?
+	// setter? getter?
+	// 익혀보기
 	String tNum = null;
 	String tType = null;
 	String tTime = null;
