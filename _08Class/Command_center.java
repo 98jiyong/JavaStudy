@@ -3,13 +3,29 @@ package _08Class;
 import java.util.Scanner;
 
 public class Command_center {
-	User_center u = new User_center();
-	Event_center e = new Event_center();
+	User_center u = null;
+	Event_center e = null;
 	Scanner sc = new Scanner(System.in);
 	
 	Command_center(){
+		if(u == null) {
+			u = new User_center();
+		}
+		if(e == null) {
+			e = new Event_center();
+		}
+		menu();
+	}
+	
+	public void menu(){
 		while(true) {
-			menu();
+			System.out.println("------");
+			System.out.println("1. 등록");
+			System.out.println("2. 수정");
+			System.out.println("3. 삭제");
+			System.out.println("4. 전체");
+			System.out.println("5. 종료");
+			System.out.println("------");
 			System.out.print(">>> ");
 			int selNum = sc.nextInt();
 			sc.nextLine();
@@ -28,16 +44,6 @@ public class Command_center {
 				System.out.println("1 ~ 5 사이의 숫자를 입력해주세요.");
 			}
 		}
-	}
-	
-	public void menu(){
-		System.out.println("------");
-		System.out.println("1. 등록");
-		System.out.println("2. 수정");
-		System.out.println("3. 삭제");
-		System.out.println("4. 전체");
-		System.out.println("5. 종료");
-		System.out.println("------");
 	}
 	
 	public void register() {
@@ -68,7 +74,7 @@ public class Command_center {
 		int ovNum = sc.nextInt();
 		sc.nextLine();
 		if(ovNum == 1) {
-			u.ovUser();
+			u.ovClient();
 		}else if(ovNum == 2){
 			e.ovEvent();
 		}else {

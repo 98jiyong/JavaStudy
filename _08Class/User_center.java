@@ -95,7 +95,7 @@ public class User_center {
 		}
 	}
 	
-	public void ovUser() {
+	public void ovClient() {
 		System.out.println("고객 리스트");
 		for(int i=0; i<ulist.length; i++) {
 			if(ulist[i] != null) {
