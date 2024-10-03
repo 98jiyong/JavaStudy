@@ -1,18 +1,15 @@
 package Course_Registration;
 
+import java.util.ArrayList;
+
 public class StudentOne {
 	
 	private String id;
 	private String name;
 	private String tel;
 	private String grade;
-	
-	public void student(String id, String name, String tel, String grade) {
-		this.id = id;
-		this.name = name;
-		this.tel = tel;
-		this.grade = grade;
-	}
+	private int cnt;
+	public ArrayList<LectureOne> signList = new ArrayList<>();
 	
 	public void setId(String id) {
 		this.id = id;
@@ -25,6 +22,12 @@ public class StudentOne {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public void setSignList(ArrayList<LectureOne> signList) {
+		this.signList = signList;
 	}
 	
 	public String getId() {
@@ -39,12 +42,24 @@ public class StudentOne {
 	public String getGrade() {
 		return grade;
 	}
-	
+	public int getCnt() {
+		return cnt;
+	}
+	public LectureOne getSignList(int a) {
+		return signList.get(a);
+	}
 	public void view() {
 		System.out.printf("%-15s", "아이디 : " + getId());
 		System.out.printf("%-10s", "이름 : " + getName());
 		System.out.printf("%-20s", "연락처 : " + getTel());
-		System.out.printf("%-5s", "학년 : " + getGrade());
+		System.out.printf("%-10s", "학년 : " + getGrade());
+		System.out.printf("%-10s", "신청한 과목 수 : " + getCnt());
 		System.out.println();
 	}
+	
+	
+	
+	
+	
+	
 }

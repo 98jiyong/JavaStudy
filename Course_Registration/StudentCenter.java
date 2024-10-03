@@ -7,14 +7,15 @@ public class StudentCenter {
 	
 	Scanner sc = new Scanner(System.in);
 	ArrayList<StudentOne> stuList = new ArrayList<>();
+	private static final int maxRegCnt = 10;
+	private static final int minRegCnt = 0;
+	boolean flag;
+//	StudentCenter(){
+//	}
 	
-	StudentCenter(){
-		System.out.println("학생관리");
-		menu();
-	}
-	
-	private void menu() {
+	public void menu() {
 		while(true) {
+			System.out.println("학생관리");
 			System.out.println("1. 등록 / 2. 검색 / 3. 조회 / 4. 삭제 (종료 : q)");
 			String choice = sc.nextLine();
 			if(choice.equals("1")) {
@@ -34,7 +35,7 @@ public class StudentCenter {
 	}
 	
 	private void register() {
-		if(stuList.size() == 10) {
+		if(stuList.size() == maxRegCnt) {
 			System.out.println("더 이상 등록할 수 없습니다.");
 		}else {
 			StudentOne s = new StudentOne();
@@ -63,29 +64,57 @@ public class StudentCenter {
 	}
 	
 	private void search() {
-		System.out.println("이름을 입력해주세요.");
-		String name = sc.nextLine();
-		System.out.println("이름에 \"" + name + "\"이(가) 포함된 검색 결과");
-		for(int i=0; i<stuList.size(); i++) {
-			String searchName = stuList.get(i).getName();
-			if(searchName.contains(name)) {
-				stuList.get(i).view();
+		if(stuList.size() == minRegCnt) {
+			System.out.println("검색할 정보가 없습니다.");
+		}else {
+			flag = true;
+			System.out.println("이름을 입력해주세요.");
+			String name = sc.nextLine();
+			if(isin(name)) {			
+				System.out.println("이름에 \"" + name + "\"이(가) 포함된 검색 결과");
+				for(int i=0; i<stuList.size(); i++) {
+					String searchName = stuList.get(i).getName();
+					if(searchName.contains(name)) {
+						stuList.get(i).view();
+					}
+				}
+			}else {
+				System.out.println("\"" + name + "\"이(가) 포함된 검색 결과가 없습니다.");
 			}
 		}
-		// 하나도 없다면?
-		// isin() 메서드로 먼저 판별 후 정보 추출 
 	}
 	
 	private void overall() {
-		for(int i=0; i<stuList.size(); i++) {
-			stuList.get(i).view();
+		if(stuList.size() == minRegCnt) {
+			System.out.println("조회할 정보가 없습니다.");
+		}else {
+			for(int i=0; i<stuList.size(); i++) {
+				System.out.print((i+1) + ". ");
+				stuList.get(i).view();
+			}
 		}
 	}
 	
 	private void delete() {
+		if(stuList.size() == minRegCnt) {
+			System.out.println("삭제할 정보가 없습니다.");
+		}else {			
+			flag = false;
+			System.out.println("삭제할 학생의 아이디를 입력해주세요.");
+			String searchId = sc.nextLine();
+			if(isin(searchId)) {
+				for(int i=0; i<stuList.size(); i++) {
+					String delId = stuList.get(i).getId();
+					if(delId.equals(searchId)) {
+						stuList.remove(i);
+					}
+				}
+			}else {
+				System.out.println("입력한 아이디가 맞는지 확인해주세요.");
+			}
+		}
 		
 	}
-	
 	
 	private boolean dpCheck(String id) {
 		for(int i=0; i<stuList.size(); i++) {
@@ -96,8 +125,24 @@ public class StudentCenter {
 		}
 		return false;
 	}
+	
 	private boolean isin(String id) {
-		
-		return true;
+		if(flag) {
+			for(int i=0; i<stuList.size(); i++) {
+				String compName = stuList.get(i).getName();
+				if(compName.contains(id)) {
+					return true;
+				}
+			}
+			return false;
+		}else{
+			for(int i=0; i<stuList.size(); i++) {
+				String compId = stuList.get(i).getId();
+				if(id.equals(compId)) {
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

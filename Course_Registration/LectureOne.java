@@ -25,4 +25,11 @@ public class LectureOne {
 	public String getProfessor() {
 		return professor;
 	}
+	
+	public void view() {
+		System.out.printf("%-15s", "과목명 : " + getSubject());
+		System.out.printf("%-12s", "강의실 : " + getRoom()); 
+		System.out.printf("%-15s", "교수명 : " + getProfessor());
+		System.out.println();
+	}
 }
