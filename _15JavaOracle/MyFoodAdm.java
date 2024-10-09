@@ -26,7 +26,6 @@ public class MyFoodAdm {
 			System.out.println("메뉴를 선택해주세요.");
 			System.out.println("1. 등록 / 2. 삭제 / 3. 수정 / 4. 전체보기 (종료:q)");
 			String selNum = sc.nextLine();
-
 			if(selNum.equals("1")) {
 				insert();
 			}else if(selNum.equals("2")) {
@@ -40,9 +39,9 @@ public class MyFoodAdm {
 			}else{
 				System.out.println("다시 입력해주세요.");
 			}
-			
 		}
 	}
+	
 	private void init() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
